@@ -1,242 +1,558 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio - Ingénieur en Génie Logiciel et SI</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="container">
-            <h1 class="logo">Votre Nom</h1>
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#apropos">À propos</a></li>
-                <li><a href="#competences">Compétences</a></li>
-                <li><a href="#projets">Projets</a></li>
-                <li><a href="#experience">Expérience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <!-- Liens CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Navigation Desktop -->
+    <nav id="desktop-nav">
+      <ul class="nav-links">
+        <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+        <li><a href="#apropos" class="nav-link">À propos</a></li>
+        <li><a href="#competences" class="nav-link">Compétences</a></li>
+        <li><a href="#projets" class="nav-link">Projets</a></li>
+        <li><a href="#experience" class="nav-link">Expérience</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li>
+          <img
+            src="assets/theme_light.png"
+            id="modeToggle"
+            class="icon"
+            src-light="assets/theme_light.png"
+            src-dark="assets/theme_dark.png"
+            alt="Mode toggle"
+          />
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Navigation Mobile -->
+    <nav id="hamburger-nav">
+      <div class="logo">Mansour Diop</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+        <div class="menu-links">
+          <li>
+            <a href="#accueil" class="nav-link" onclick="toggleMenu()"
+              >Accueil</a
+            >
+          </li>
+          <li>
+            <a href="#apropos" class="nav-link" onclick="toggleMenu()"
+              >À propos</a
+            >
+          </li>
+          <li>
+            <a href="#competences" class="nav-link" onclick="toggleMenu()"
+              >Compétences</a
+            >
+          </li>
+          <li>
+            <a href="#projets" class="nav-link" onclick="toggleMenu()"
+              >Projets</a
+            >
+          </li>
+          <li>
+            <a href="#experience" class="nav-link" onclick="toggleMenu()"
+              >Expérience</a
+            >
+          </li>
+          <li>
+            <a href="#contact" class="nav-link" onclick="toggleMenu()"
+              >Contact</a
+            >
+          </li>
+        </div>
+      </div>
     </nav>
 
     <!-- Section Accueil -->
-    <section id="accueil" class="showcase">
-        <div class="container">
-            <div class="showcase-content">
-                <h1>Ingénieur en Génie Logiciel et Systèmes d'Information</h1>
-                <p>Développement, Architecture, Solutions Innovantes</p>
-                <a href="#projets" class="btn">Voir mes projets</a>
-            </div>
+    <section id="accueil">
+      <!-- Photo à gauche -->
+      <div class="section-container">
+        <div class="section__pic-container">
+          <!-- PERSONNALISATION: Remplacez par votre photo -->
+          <img src="assets/image.jpg" alt="Votre photo" class="me" />
         </div>
+        <div class="section__text">
+          <p class="section__text__p1">Bonjour, je suis</p>
+          <h1 class="title">Mansour Diop</h1>
+          <p class="section__text__p2">
+            <span class="static-text">Je suis </span>
+            <!-- PERSONNALISATION: Modifiez ces métiers selon votre profil -->
+            <span
+              class="dynamic-text"
+              data-type='["Ingénieur en Génie Logiciel", "Développeur Full Stack"]'
+              data-period="2000"
+            ></span>
+          </p>
+          <div class="btn-container">
+            <button class="btn btn-color-1" onclick="window.open('cv/cv.pdf')">
+              Télécharger CV
+            </button>
+            <button
+              class="btn btn-color-2"
+              onclick="location.href='mailto:mouhamadoumansourdiop@esp.sn'"
+            >
+              Me contacter
+            </button>
+          </div>
+          <div id="socials-container">
+            <!-- PERSONNALISATION: Ajoutez vos liens sociaux -->
+            <a
+              href="https://www.instagram.com/mans0ur_di0p/"
+              class="social-link"
+              target="_blank"
+            >
+              <img
+                src="assets/instagram.png"
+                alt="instagram"
+                class="icon"
+                src-light="assets/instagram.png"
+                src-dark="assets/instagram.png"
+              />
+            </a>
+            <a
+              href="https://github.com/mansour-dx"
+              class="social-link"
+              target="_blank"
+            >
+              <img
+                src="assets/github_light.png"
+                alt="GitHub"
+                class="icon"
+                src-light="assets/github_light.png"
+                src-dark="assets/github_dark.png"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Section À Propos -->
-    <section id="apropos" class="section-padding">
-        <div class="container">
-            <h2>À Propos de Moi</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Je suis un ingénieur en génie logiciel et systèmes d'information passionné par [vos intérêts]. 
-                    Avec [X] années d'expérience dans le développement de solutions logicielles et la conception 
-                    de systèmes d'information, je combine expertise technique et vision stratégique.</p>
-                    
-                    <p>Mon approche: [décrivez votre approche professionnelle, méthodologie, etc.]</p>
-                    
-                    <div class="about-buttons">
-                        <a href="#contact" class="btn">Me contacter</a>
-                        <a href="cv.pdf" class="btn btn-outlined" target="_blank">Télécharger mon CV</a>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <img src="votre-photo.jpg" alt="Votre photo">
-                </div>
-            </div>
+    <!-- Section À propos -->
+    <section id="apropos">
+      <h1 class="title" data-aos="fade-up">À propos de moi</h1>
+      <div class="section-container">
+        <div class="section__pic-container" data-aos="fade-right">
+          <!-- PERSONNALISATION: Autre photo de vous -->
+          <img
+            src="assets/image1.jpg"
+            alt="Photo de profil"
+            class="about-pic"
+          />
         </div>
+        <div class="about-details-container" data-aos="fade-left">
+          <div class="about-containers">
+            <div class="details-container">
+              <h3>Expérience</h3>
+              <p>
+                <!-- PERSONNALISATION : Mon expérience -->
+                3 ans d'expérience académique et professionnelle<br />
+                Spécialisé en Génie logiciel et systèmes d'information<br />
+                Expérience en développement mobile et web
+              </p>
+            </div>
+            <div class="details-container">
+              <h3>Éducation</h3>
+              <p>
+                Titulaire d’un Brevet de Technicien Supérieur en Informatique
+                (DST), obtenu à l’École Supérieure Polytechnique de Dakar,<br />
+                je poursuis actuellement une Licence 3 en Génie Logiciel et
+                Systèmes d’Information dans ce même établissement.
+              </p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+              J’ai découvert la programmation en 2021, animé par une curiosité
+              naturelle pour le fonctionnement des technologies numériques. J’ai
+              commencé à apprendre les bases du code sur la plateforme
+              <a href="https://openclassrooms.com/fr" target="_blank"
+                >OpenClassrooms</a
+              >, ce qui m’a permis de comprendre les fondamentaux de
+              l’informatique.
+            </p>
+            <p>
+              Aujourd’hui, je poursuis ma formation en Licence 3 en Génie
+              Logiciel et Systèmes d’Information à l’École Supérieure
+              Polytechnique de Dakar, avec un intérêt particulier pour le
+              développement web, les bases de données,les systèmes d’information
+              et l'administration système.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Section Compétences -->
-    <section id="competences" class="section-padding bg-light">
-        <div class="container">
-            <h2>Mes Compétences</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Développement</h3>
-                    <ul>
-                        <li>Java / Spring</li>
-                        <li>Python / Django</li>
-                        <li>JavaScript / React</li>
-                        <li>C# / .NET</li>
-                        <li>SQL / NoSQL</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Architecture</h3>
-                    <ul>
-                        <li>Microservices</li>
-                        <li>API RESTful</li>
-                        <li>Architecture Cloud</li>
-                        <li>DevOps</li>
-                        <li>Sécurité informatique</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>SI & Méthodologies</h3>
-                    <ul>
-                        <li>Analyse des besoins</li>
-                        <li>UML / Modélisation</li>
-                        <li>Agile / Scrum</li>
-                        <li>ERP / CRM</li>
-                        <li>Business Intelligence</li>
-                    </ul>
-                </div>
-            </div>
+    <section id="competences" class="section-padding">
+      <h1 class="title" data-aos="fade-up">Mes compétences</h1>
+
+      <!-- Section Technologies (Toolbox uniquement) -->
+      <div class="technologies-section" data-aos="fade-up">
+        <h2 class="technologies-title">My Toolbox ⚒️</h2>
+
+        <div class="technologies-container">
+          <!-- Les technologies demandées -->
+          <div class="technology-item" data-aos="zoom-in" data-aos-delay="100">
+            <img src="assets/java.jpg" alt="Java" class="technology-icon" />
+            <span class="technology-name">Java</span>
+          </div>
+          <div class="technology-item" data-aos="zoom-in" data-aos-delay="150">
+            <img
+              src="assets/javascript.png"
+              alt="JavaScript"
+              class="technology-icon"
+            />
+            <span class="technology-name">JavaScript</span>
+          </div>
+          <div class="technology-item" data-aos="zoom-in" data-aos-delay="200">
+            <img src="assets/html.png" alt="HTML" class="technology-icon" />
+            <span class="technology-name">HTML</span>
+          </div>
+          <div class="technology-item" data-aos="zoom-in" data-aos-delay="250">
+            <img src="assets/css.png" alt="CSS" class="technology-icon" />
+            <span class="technology-name">CSS</span>
+          </div>
+          <div class="technology-item" data-aos="zoom-in" data-aos-delay="300">
+            <img src="assets/mysql.jpg" alt="MySQL" class="technology-icon" />
+            <span class="technology-name">MySQL</span>
+          </div>
+          <div class="technology-item" data-aos="zoom-in" data-aos-delay="350">
+            <img src="assets/github.png" alt="GitHub" class="technology-icon" />
+            <span class="technology-name">GitHub</span>
+          </div>
+          <div class="technology-item" data-aos="zoom-in" data-aos-delay="400">
+            <img
+              src="assets/deepseek.png"
+              alt="DeepSeek"
+              class="technology-icon"
+            />
+            <span class="technology-name">DeepSeek</span>
+          </div>
+          <div class="technology-item" data-aos="zoom-in" data-aos-delay="450">
+            <img src="assets/languageC.jpg" alt="C" class="technology-icon" />
+            <span class="technology-name">C</span>
+          </div>
+          <div class="technology-item" data-aos="zoom-in" data-aos-delay="500">
+            <img src="assets/python.png" alt="Python" class="technology-icon" />
+            <span class="technology-name">Python</span>
+          </div>
+          <div class="technology-item" data-aos="zoom-in" data-aos-delay="550">
+            <img
+              src="assets/streamlit.png"
+              alt="Streamlit"
+              class="technology-icon"
+            />
+            <span class="technology-name">Streamlit</span>
+          </div>
+          <div class="technology-item" data-aos="zoom-in" data-aos-delay="600">
+            <img src="assets/git.png" alt="git" class="technology-icon" />
+            <span class="technology-name">git</span>
+          </div>
+          <div class="technology-item" data-aos="zoom-in" data-aos-delay="650">
+            <img src="assets/cli.png" alt="cli" class="technology-icon" />
+            <span class="technology-name">cli</span>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Section Projets -->
-    <section id="projets" class="section-padding">
-        <div class="container">
-            <h2>Mes Projets</h2>
-            <div class="projects-grid">
-                <!-- Projet 1 -->
-                <div class="project-card">
-                    <img src="projet1.jpg" alt="Projet 1">
-                    <div class="project-info">
-                        <h3>Nom du Projet 1</h3>
-                        <p>Description courte du projet, technologies utilisées et résultats obtenus.</p>
-                        <div class="project-tags">
-                            <span>Java</span>
-                            <span>Spring</span>
-                            <span>MySQL</span>
-                        </div>
-                        <a href="#" class="btn btn-sm">Voir détails</a>
-                    </div>
-                </div>
-                
-                <!-- Projet 2 -->
-                <div class="project-card">
-                    <img src="projet2.jpg" alt="Projet 2">
-                    <div class="project-info">
-                        <h3>Nom du Projet 2</h3>
-                        <p>Description courte du projet, technologies utilisées et résultats obtenus.</p>
-                        <div class="project-tags">
-                            <span>React</span>
-                            <span>Node.js</span>
-                            <span>MongoDB</span>
-                        </div>
-                        <a href="#" class="btn btn-sm">Voir détails</a>
-                    </div>
-                </div>
-                
-                <!-- Projet 3 -->
-                <div class="project-card">
-                    <img src="projet3.jpg" alt="Projet 3">
-                    <div class="project-info">
-                        <h3>Nom du Projet 3</h3>
-                        <p>Description courte du projet, technologies utilisées et résultats obtenus.</p>
-                        <div class="project-tags">
-                            <span>Python</span>
-                            <span>Django</span>
-                            <span>PostgreSQL</span>
-                        </div>
-                        <a href="#" class="btn btn-sm">Voir détails</a>
-                    </div>
-                </div>
+    <section id="projets">
+      <h1 class="title" data-aos="fade-up">Mes Projets</h1>
+      <div class="projects-container">
+        <!-- PERSONNALISATION: Ajoutez vos projets -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-image">
+            <img
+              src="assets/projet2 (1).png"
+              alt="Projet 1"
+              class="project-img"
+            />
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Application de gestion d'assurance</h3>
+            <p class="project-description">
+              KaayAssure Une application web développée avec Laravel pour la
+              gestion des assurances, offrant une interface moderne et
+              responsive avec Tailwind CSS, permettant de simplifier et
+              d'optimiser les opérations des compagnies d'assurance.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-tag">Laravel</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Php</span>
+              <span class="tech-tag">Tailwind CSS</span>
             </div>
+            <div class="btn-container">
+              <a
+                href="https://github.com/mansour-dx/KaayAssurer"
+                class="btn project-btn btn-color-1"
+                target="_blank"
+                >Repository</a
+              >
+              <a
+                href="https://github.com/mansour-dx/KaayAssurer"
+                class="btn project-btn btn-color-2"
+                target="_blank"
+                >Github</a
+              >
+            </div>
+          </div>
         </div>
+
+        <!-- Projet 2 -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-image">
+            <img
+              src="assets/projet2 (2).png"
+              alt="Projet 2"
+              class="project-img"
+            />
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Application de gestion d'entreprise</h3>
+            <p class="project-description">
+              Gestion Entreprise Laravel Une application web développée avec
+              Laravel, Bootstrap et Tailwind CSS, permettant de gérer les
+              employés, clients et documents via des opérations CRUD, le tout
+              dans un tableau de bord interactif.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-tag">Tailwind CSS</span>
+              <span class="tech-tag">Laravel</span>
+              <span class="tech-tag">Bootstrap</span>
+              <span class="tech-tag">CRUD</span>
+            </div>
+            <div class="btn-container">
+              <a
+                href="https://github.com/mansour-dx/gestion-entreprise-laravel"
+                class="btn project-btn btn-color-1"
+                target="_blank"
+                >Repository</a
+              >
+              <a
+                href="https://github.com/mansour-dx/gestion-entreprise-laravel"
+                class="btn project-btn btn-color-2"
+                target="_blank"
+                >Github</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Projet 3 -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="project-image">
+            <img
+              src="assets/projet2 (3).png"
+              alt="Projet 3"
+              class="project-img"
+            />
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Sudoku Solver en java</h3>
+            <p class="project-description">
+              Sudoku Solver : Une application Java capable de résoudre
+              automatiquement des grilles de Sudoku en utilisant l’algorithme de
+              backtracking. Elle permet à l’utilisateur d’entrer une grille
+              incomplète et affiche la solution complète en quelques secondes.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-tag">java</span>
+              <span class="tech-tag">mysql</span>
+              <span class="tech-tag">CLI</span>
+            </div>
+            <div class="btn-container">
+              <a
+                href="https://github.com/mansour-dx/Sudoku-Solver-Java"
+                class="btn project-btn btn-color-1"
+                target="_blank"
+                >Repository</a
+              >
+              <a
+                href="https://github.com/mansour-dx/Sudoku-Solver-Java"
+                class="btn project-btn btn-color-2"
+                target="_blank"
+                >GitHub</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Section Expérience -->
     <section id="experience" class="section-padding bg-light">
-        <div class="container">
-            <h2>Mon Expérience Professionnelle</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2020 - Présent</div>
-                    <div class="timeline-content">
-                        <h3>Ingénieur Développement Senior</h3>
-                        <h4>Nom de l'entreprise</h4>
-                        <p>Description des responsabilités et réalisations principales. Projets marquants, technologies utilisées, résultats obtenus.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">2017 - 2020</div>
-                    <div class="timeline-content">
-                        <h3>Ingénieur Logiciel</h3>
-                        <h4>Nom de l'entreprise</h4>
-                        <p>Description des responsabilités et réalisations principales. Projets marquants, technologies utilisées, résultats obtenus.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">2015 - 2017</div>
-                    <div class="timeline-content">
-                        <h3>Développeur Full Stack</h3>
-                        <h4>Nom de l'entreprise</h4>
-                        <p>Description des responsabilités et réalisations principales. Projets marquants, technologies utilisées, résultats obtenus.</p>
-                    </div>
-                </div>
-            </div>
+      <h1 class="title" data-aos="fade-up">Mon Expérience Professionnelle</h1>
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-date">2020 - Présent</div>
+          <div class="timeline-content">
+            <h3>Ingénieur Développement Senior</h3>
+            <h4>Nom de l'entreprise</h4>
+            <p>
+              Description des responsabilités et réalisations principales.
+              Projets marquants, technologies utilisées, résultats obtenus.
+            </p>
+          </div>
         </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="timeline-date">2017 - 2020</div>
+          <div class="timeline-content">
+            <h3>Ingénieur Logiciel</h3>
+            <h4>Nom de l'entreprise</h4>
+            <p>
+              Description des responsabilités et réalisations principales.
+              Projets marquants, technologies utilisées, résultats obtenus.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="timeline-date">2015 - 2017</div>
+          <div class="timeline-content">
+            <h3>Développeur Full Stack</h3>
+            <h4>Nom de l'entreprise</h4>
+            <p>
+              Description des responsabilités et réalisations principales.
+              Projets marquants, technologies utilisées, résultats obtenus.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Section Contact -->
-    <section id="contact" class="section-padding">
-        <div class="container">
-            <h2>Me Contacter</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <p>email@exemple.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <p>+33 6 12 34 56 78</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>Paris, France</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Votre nom" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" placeholder="Votre email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" placeholder="Sujet" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" placeholder="Votre message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-block">Envoyer</button>
-                    </form>
-                </div>
+    <!-- Section Contact (refaite) -->
+    <section id="contact">
+      <h1 class="title" data-aos="fade-up">Me contacter</h1>
+
+      <div class="contact-container" data-aos="fade-up">
+        <div class="contact-info">
+          <div class="contact-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="contact-icon-container">
+              <img
+                src="assets/email.png"
+                alt="Email"
+                class="icon contact-icon"
+                src-light="assets/email.png"
+                src-dark="assets/email.png"
+              />
             </div>
+            <h3>Email</h3>
+            <p>
+              <a href="mailto:mouhamadoumansourdiop@esp.sn"
+                >contact@msr.codes</a
+              >
+            </p>
+          </div>
+
+          <div class="contact-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="contact-icon-container">
+              <img
+                src="assets/telephone.png"
+                alt="Téléphone"
+                class="icon contact-icon"
+                src-light="assets/telephone.png"
+                src-dark="assets/telephone.png"
+              />
+            </div>
+            <h3>Téléphone</h3>
+            <p>+221 78 421 74 75 (Whatsapp)</p>
+          </div>
+
+          <div class="contact-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="contact-icon-container">
+              <img
+                src="assets/localisation.png"
+                alt="Localisation"
+                class="icon contact-icon"
+                src-light="assets/localisation.png"
+                src-dark="assets/localisation.png"
+              />
+            </div>
+            <h3>Localisation</h3>
+            <p>Dakar, Sénégal</p>
+          </div>
         </div>
+
+        <div
+          class="contact-form-container"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          <form id="contactForm">
+            <div class="form-group">
+              <input type="text" id="name" placeholder="Votre nom" required />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                id="email"
+                placeholder="Votre email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input type="text" id="subject" placeholder="Sujet" required />
+            </div>
+            <div class="form-group">
+              <textarea
+                id="message"
+                placeholder="Votre message"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-color-1 btn-block">
+              Envoyer
+            </button>
+          </form>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2023 Votre Nom. Tous droits réservés.</p>
+      <div class="footer-content">
+        <nav>
+          <div class="nav-links-container">
+            <ul class="nav-links">
+              <li><a href="#accueil">Accueil</a></li>
+              <li><a href="#apropos">À propos</a></li>
+              <li><a href="#competences">Compétences</a></li>
+              <li><a href="#projets">Projets</a></li>
+              <li><a href="#experience">Expérience</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="footer-bottom">
+          <p>
+            Copyright &copy; 2025.Tous droits réservés.<br />Construit avec ❤️
+            par mansour-dx
+          </p>
         </div>
+      </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
