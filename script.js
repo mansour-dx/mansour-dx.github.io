@@ -199,20 +199,43 @@ document.addEventListener("DOMContentLoaded", function () {
       const subject = document.getElementById("subject").value;
       const message = document.getElementById("message").value;
 
-      // Validation basique
-      if (!name || !email || !subject || !message) {
-        alert("Veuillez remplir tous les champs du formulaire.");
-        return;
-      }
+      // Affichage d'un message de chargement
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+      submitButton.textContent = "Envoi en cours...";
+      submitButton.disabled = true;
 
-      // Ici, vous pouvez ajouter le code pour envoyer réellement le formulaire
-      // par exemple via fetch API ou en redirigeant vers un service comme FormSpree
-
-      // Pour démonstration, affichage d'une alerte
-      alert(`Merci ${name} pour votre message! Je vous contacterai bientôt.`);
-
-      // Réinitialisation du formulaire
-      contactForm.reset();
+      // Envoi du formulaire à FormSubmit
+      fetch("https://formsubmit.co/ajax/mansourd197@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          subject: subject,
+          message: message,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            alert("Merci pour votre message ! Je vous contacterai bientôt.");
+            contactForm.reset();
+          } else {
+            alert("Une erreur s'est produite. Veuillez réessayer.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Une erreur s'est produite. Veuillez réessayer.");
+        })
+        .finally(() => {
+          submitButton.textContent = originalButtonText;
+          submitButton.disabled = false;
+        });
     });
   }
 });
