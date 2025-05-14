@@ -13,6 +13,7 @@
   --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
   --backdrop: blur(10px);
   --border-color: rgba(0, 0, 0, 0.1);
+  --vh: 1vh; /* Variable pour la hauteur des appareils mobiles */
 }
 
 /* Mode sombre */
@@ -33,6 +34,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -40,10 +42,15 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 h1,
@@ -232,7 +239,8 @@ nav {
 section {
   padding-top: 4vh;
   height: auto;
-  min-height: 100vh;
+  min-height: 100vh; /* Hauteur pour desktop */
+  min-height: calc(100 * var(--vh)); /* Hauteur pour mobile */
   margin: 0 10rem;
   box-sizing: border-box;
   display: flex;
@@ -990,15 +998,18 @@ footer .nav-links a:hover {
     padding: 0;
     text-align: center;
   }
+
   .menu-links.open {
     max-height: 300px;
     padding: 0.5rem;
     left: auto;
   }
+
   .menu-links a {
     text-align: center;
     padding: 10px 20px;
     border-bottom: none;
+    white-space: nowrap;
   }
 
   #accueil {
@@ -1195,6 +1206,8 @@ footer .nav-links a:hover {
 
   .title {
     font-size: 2.5rem;
+    word-wrap: break-word;
+    hyphens: auto;
   }
 
   .btn-container {
@@ -1259,8 +1272,15 @@ footer .nav-links a:hover {
   .contact-form-container {
     padding: 1.5rem;
   }
+
+  /* Amélioration pour les petits écrans */
+  .form-group input,
+  .form-group textarea {
+    font-size: 16px; /* Empêche le zoom sur iOS */
+  }
 }
 
+/* Très petits écrans */
 @media screen and (max-width: 400px) {
   .section__pic-container {
     width: 200px;
@@ -1289,5 +1309,64 @@ footer .nav-links a:hover {
 
   .timeline-content h4 {
     font-size: 1rem;
+  }
+
+  /* Corrections pour empêcher le débordement */
+  .technology-name {
+    font-size: 0.7rem;
+  }
+
+  .technology-item {
+    padding: 0.5rem;
+  }
+
+  .technology-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Support pour les écrans très étroits */
+@media screen and (max-width: 320px) {
+  .section__pic-container {
+    width: 180px;
+    height: 180px;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .btn {
+    min-width: 10rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .technologies-container {
+    gap: 0.25rem;
+  }
+
+  .menu-links a {
+    padding: 8px 15px;
+    font-size: 1rem;
+  }
+}
+
+/* Ajout de la classe pour animations sur petits appareils */
+.project-card.active,
+.contact-card.active,
+.timeline-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation par défaut pour ces éléments sur appareils mobiles */
+@media screen and (max-width: 768px) {
+  .project-card,
+  .contact-card,
+  .timeline-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
   }
 }

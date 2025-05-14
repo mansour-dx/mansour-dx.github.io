@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover"
     />
     <title>mansour-dx.dev</title>
+    <!-- Preload des polices pour éviter les FOIT/FOUT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Liens CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
@@ -14,6 +17,8 @@
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
     ></script>
+    <!-- Ajout de la balise pour éviter le zoom sur les champs de formulaire sur iOS -->
+    <meta name="format-detection" content="telephone=no" />
   </head>
   <body>
     <!-- Navigation Desktop -->
@@ -569,6 +574,8 @@
                 name="message"
                 placeholder="Votre message"
                 required
+                rows="5"
+                resize="vertical"
               ></textarea>
             </div>
             <button type="submit" class="btn btn-color-1 btn-block">

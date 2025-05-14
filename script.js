@@ -12,17 +12,35 @@ document.addEventListener("DOMContentLoaded", function () {
     duration: 1000, // Durée des animations en millisecondes
     once: true, // Les animations ne se jouent qu'une fois
     mirror: false, // Ne pas rejouer les animations en remontant
+    disable: function () {
+      // Désactiver sur les petits appareils pour des performances optimales
+      return window.innerWidth < 768;
+    },
   });
 
   // Ajout d'un gestionnaire pour l'orientation
   window.addEventListener("orientationchange", function () {
     // Forcer le rafraîchissement de la mise en page après changement d'orientation
     setTimeout(function () {
+      AOS.refresh();
       window.scrollBy(0, 1);
       window.scrollBy(0, -1);
     }, 300);
   });
+
+  // Gestion du redimensionnement de fenêtre
+  window.addEventListener("resize", handleResize);
+
+  // Vérification initiale de la taille d'écran
+  handleResize();
 });
+
+// Gestion de la taille d'écran
+function handleResize() {
+  // Ajuster la hauteur pour les appareils mobiles (éviter les problèmes avec la barre d'adresse)
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+}
 
 // Navigation active lors du défilement
 const sections = document.querySelectorAll("section");
@@ -169,6 +187,14 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         behavior: "smooth",
       });
     }
+
+    // Fermer le menu hamburger si ouvert lors d'un clic sur un lien
+    const menu = document.querySelector(".menu-links");
+    const icon = document.querySelector(".hamburger-icon");
+    if (menu && menu.classList.contains("open")) {
+      menu.classList.remove("open");
+      icon.classList.remove("open");
+    }
   });
 });
 
@@ -178,8 +204,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   projectCards.forEach((card) => {
     card.addEventListener("mouseenter", function () {
-      // Effet d'inclinaison subtil
-      this.style.transform = `translateY(-10px)`;
+      // N'appliquer l'effet que sur desktop (pas sur tactile)
+      if (window.innerWidth > 1024) {
+        // Effet d'inclinaison subtil
+        this.style.transform = `translateY(-10px)`;
+      }
     });
 
     card.addEventListener("mouseleave", function () {
@@ -249,20 +278,43 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Révélation des éléments au défilement (alternative à AOS si nécessaire)
+// Amélioration pour dispositifs mobiles - gestion de la taille réelle de l'écran
 function revealOnScroll() {
-  const elements = document.querySelectorAll(".reveal");
+  const elements = document.querySelectorAll(
+    ".project-card, .contact-card, .timeline-item"
+  );
+  const windowHeight = window.innerHeight;
 
-  for (let i = 0; i < elements.length; i++) {
-    const windowHeight = window.innerHeight;
-    const elementTop = elements[i].getBoundingClientRect().top;
+  elements.forEach((element) => {
+    const elementTop = element.getBoundingClientRect().top;
     const elementVisible = 150;
 
     if (elementTop < windowHeight - elementVisible) {
-      elements[i].classList.add("active");
+      if (!element.classList.contains("active")) {
+        element.classList.add("active");
+      }
     }
-  }
+  });
 }
 
-// Utiliser cette fonction si vous n'utilisez pas AOS
-// window.addEventListener('scroll', revealOnScroll);
+// Exécuter lors du défilement pour dispositifs où AOS est désactivé
+window.addEventListener("scroll", function () {
+  if (window.innerWidth < 768) {
+    revealOnScroll();
+  }
+});
+
+// Initialisation pour les appareils mobiles
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth < 768) {
+    revealOnScroll();
+  }
+
+  // Fixer les problèmes d'images brisées
+  document.querySelectorAll("img").forEach((img) => {
+    img.addEventListener("error", function () {
+      // Remplacer par une image par défaut ou cacher
+      this.style.display = "none";
+    });
+  });
+});
