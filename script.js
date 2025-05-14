@@ -13,6 +13,15 @@ document.addEventListener("DOMContentLoaded", function () {
     once: true, // Les animations ne se jouent qu'une fois
     mirror: false, // Ne pas rejouer les animations en remontant
   });
+
+  // Ajout d'un gestionnaire pour l'orientation
+  window.addEventListener("orientationchange", function () {
+    // Forcer le rafraîchissement de la mise en page après changement d'orientation
+    setTimeout(function () {
+      window.scrollBy(0, 1);
+      window.scrollBy(0, -1);
+    }, 300);
+  });
 });
 
 // Navigation active lors du défilement
