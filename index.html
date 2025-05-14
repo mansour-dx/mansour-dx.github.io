@@ -10,6 +10,12 @@
     <!-- Preload des polices pour éviter les FOIT/FOUT -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
     <!-- Liens CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
@@ -93,7 +99,12 @@
       <div class="section-container">
         <div class="section__pic-container">
           <!-- PERSONNALISATION: Remplacez par votre photo -->
-          <img src="assets/image.jpg" alt="Votre photo" class="me" />
+          <img
+            src="assets/image.jpg"
+            alt="Votre photo"
+            class="me"
+            loading="lazy"
+          />
         </div>
         <div class="section__text">
           <p class="section__text__p1">Bonjour, je suis</p>
@@ -125,6 +136,8 @@
               href="https://www.linkedin.com/in/mansour-diop-012b2a365/"
               class="social-link"
               target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
             >
               <img
                 src="assets/linkedin.pngg"
@@ -132,12 +145,17 @@
                 class="icon"
                 src-light="assets/linkedin.png"
                 src-dark="assets/linkedin.png"
+                loading="lazy"
+                width="32"
+                height="32"
               />
             </a>
             <a
               href="https://www.instagram.com/mans0ur_di0p/"
               class="social-link"
               target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
             >
               <img
                 src="assets/instagram.png"
@@ -145,12 +163,17 @@
                 class="icon"
                 src-light="assets/instagram.png"
                 src-dark="assets/instagram.png"
+                loading="lazy"
+                width="32"
+                height="32"
               />
             </a>
             <a
               href="https://github.com/mansour-dx"
               class="social-link"
               target="_blank"
+              rel="noopener"
+              aria-label="GitHub"
             >
               <img
                 src="assets/github_light.png"
@@ -158,6 +181,9 @@
                 class="icon"
                 src-light="assets/github_light.png"
                 src-dark="assets/github_dark.png"
+                loading="lazy"
+                width="32"
+                height="32"
               />
             </a>
           </div>
@@ -576,6 +602,7 @@
                 required
                 rows="5"
                 resize="vertical"
+                spellcheck="true"
               ></textarea>
             </div>
             <button type="submit" class="btn btn-color-1 btn-block">

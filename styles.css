@@ -14,6 +14,8 @@
   --backdrop: blur(10px);
   --border-color: rgba(0, 0, 0, 0.1);
   --vh: 1vh; /* Variable pour la hauteur des appareils mobiles */
+  --font-sans: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
 }
 
 /* Mode sombre */
@@ -35,22 +37,27 @@
   padding: 0;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-sans);
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
   overflow-x: hidden;
   width: 100%;
   position: relative;
+  font-size: 16px;
 }
 
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   width: 100%;
+  font-size: 100%;
 }
 
 h1,
@@ -60,10 +67,15 @@ h4,
 h5,
 h6 {
   color: var(--text-color);
+  line-height: 1.3;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 p {
   color: var(--text-color-light);
+  margin-bottom: 1rem;
 }
 
 a {
@@ -330,6 +342,7 @@ section {
   margin-bottom: 1rem;
   color: var(--text-color);
   opacity: 0.9;
+  letter-spacing: -0.01em;
 }
 
 .section__text__p2 {
@@ -337,6 +350,7 @@ section {
   margin-bottom: 2rem;
   min-height: 3rem;
   text-align: left;
+  line-height: 1.4;
 }
 
 .section__text__p2 .static-text {
@@ -356,6 +370,7 @@ section {
   color: var(--text-color);
   font-weight: 700;
   text-align: left;
+  letter-spacing: -0.02em;
 }
 
 #socials-container {
@@ -512,6 +527,8 @@ section {
   color: var(--text-color);
   position: relative;
   display: inline-block;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .technologies-title::after {
@@ -564,6 +581,8 @@ section {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-color);
+  margin-top: 0.5rem;
+  text-align: center;
 }
 
 /* PROJECTS SECTION */
@@ -660,6 +679,7 @@ section {
   font-weight: 600;
   margin-bottom: 1rem;
   color: var(--text-color);
+  line-height: 1.3;
 }
 
 .project-description {
@@ -667,6 +687,7 @@ section {
   margin-bottom: 1.5rem;
   line-height: 1.6;
   flex-grow: 1;
+  font-size: 0.95rem;
 }
 
 .project-card .btn-container {
@@ -842,11 +863,15 @@ section {
   color: var(--text-color);
   font-family: inherit;
   transition: all 0.3s ease;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
 }
 
 .form-group textarea {
   min-height: 150px;
   resize: vertical;
+  line-height: 1.6;
 }
 
 .form-group input:focus,
@@ -1198,16 +1223,19 @@ footer .nav-links a:hover {
 
   .section__text__p1 {
     font-size: 1.25rem;
+    letter-spacing: normal;
   }
 
   .section__text__p2 {
     font-size: 1.1rem;
+    letter-spacing: normal;
   }
 
   .title {
     font-size: 2.5rem;
     word-wrap: break-word;
     hyphens: auto;
+    letter-spacing: -0.01em;
   }
 
   .btn-container {
@@ -1278,6 +1306,34 @@ footer .nav-links a:hover {
   .form-group textarea {
     font-size: 16px; /* Empêche le zoom sur iOS */
   }
+
+  body {
+    font-size: 15px;
+  }
+
+  html {
+    font-size: 95%;
+  }
+
+  .project-title {
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 16px; /* Taille fixe pour éviter le zoom sur iOS */
+    padding: 0.9rem;
+  }
+
+  .btn {
+    font-size: 0.95rem;
+  }
 }
 
 /* Très petits écrans */
@@ -1289,6 +1345,7 @@ footer .nav-links a:hover {
 
   .title {
     font-size: 2rem;
+    letter-spacing: normal;
   }
 
   #socials-container {
@@ -1324,6 +1381,43 @@ footer .nav-links a:hover {
     width: 30px;
     height: 30px;
   }
+
+  body {
+    font-size: 14px;
+  }
+
+  html {
+    font-size: 90%;
+  }
+
+  .project-description {
+    font-size: 0.85rem;
+  }
+
+  .project-title {
+    font-size: 1.2rem;
+  }
+
+  .project-description {
+    font-size: 0.85rem;
+  }
+
+  .details-container h3 {
+    font-size: 1.1rem;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.2rem;
+    letter-spacing: -0.01em;
+  }
+
+  .timeline-content h4 {
+    font-size: 1rem;
+  }
+
+  .contact-card h3 {
+    font-size: 1.1rem;
+  }
 }
 
 /* Support pour les écrans très étroits */
@@ -1349,6 +1443,14 @@ footer .nav-links a:hover {
   .menu-links a {
     padding: 8px 15px;
     font-size: 1rem;
+  }
+
+  body {
+    font-size: 13px;
+  }
+
+  html {
+    font-size: 85%;
   }
 }
 
