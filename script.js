@@ -224,59 +224,59 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Formulaire de contact
-document.addEventListener("DOMContentLoaded", function () {
-  const contactForm = document.getElementById("contactForm");
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
+// Modern contact form validation and feedback
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("form-status");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", function (e) {
+    // Validation simple côté client
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const message = document.getElementById("message").value.trim();
+    let valid = true;
+    let errorMsg = "";
+    if (!name) {
+      valid = false;
+      errorMsg = "Veuillez entrer votre nom.";
+    } else if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+      valid = false;
+      errorMsg = "Veuillez entrer un email valide.";
+    } else if (!subject) {
+      valid = false;
+      errorMsg = "Veuillez entrer un sujet.";
+    } else if (!message) {
+      valid = false;
+      errorMsg = "Veuillez entrer un message.";
+    }
+    if (!valid) {
       e.preventDefault();
+      formStatus.textContent = errorMsg;
+      formStatus.style.color = "#e74c3c";
+      return false;
+    } else {
+      formStatus.textContent = "Envoi en cours...";
+      formStatus.style.color = "#4f8cff";
+    }
+  });
+}
 
-      // Récupération des valeurs du formulaire
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const subject = document.getElementById("subject").value;
-      const message = document.getElementById("message").value;
-
-      // Affichage d'un message de chargement
-      const submitButton = contactForm.querySelector('button[type="submit"]');
-      const originalButtonText = submitButton.textContent;
-      submitButton.textContent = "Envoi en cours...";
-      submitButton.disabled = true;
-
-      // Envoi du formulaire à FormSubmit
-      fetch("https://formsubmit.co/ajax/mansourd197@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          subject: subject,
-          message: message,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            alert("Merci pour votre message ! Je vous contacterai bientôt.");
-            contactForm.reset();
-          } else {
-            alert("Une erreur s'est produite. Veuillez réessayer.");
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          alert("Une erreur s'est produite. Veuillez réessayer.");
-        })
-        .finally(() => {
-          submitButton.textContent = originalButtonText;
-          submitButton.disabled = false;
-        });
-    });
-  }
-});
+// Affichage du message de succès si redirigé après envoi
+if (window.location.hash === "#contact-success") {
+  setTimeout(() => {
+    const formStatus = document.getElementById("form-status");
+    if (formStatus) {
+      formStatus.textContent = "Merci, votre message a bien été envoyé !";
+      formStatus.style.color = "#27ae60";
+    }
+    // Scroll to contact section
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }, 300);
+}
 
 // Amélioration pour dispositifs mobiles - gestion de la taille réelle de l'écran
 function revealOnScroll() {

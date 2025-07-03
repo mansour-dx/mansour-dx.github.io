@@ -19,16 +19,26 @@
     <!-- Liens CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="assets/image.jpg" />
+    <meta
+      name="description"
+      content="Portfolio de Mansour Diop, développeur full stack, étudiant en informatique, projets, compétences, contact."
+    />
     <script
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
     ></script>
     <!-- Ajout de la balise pour éviter le zoom sur les champs de formulaire sur iOS -->
     <meta name="format-detection" content="telephone=no" />
+    <link rel="preload" as="image" href="assets/image.jpg" />
+    <link rel="preload" as="image" href="assets/image1.jpg" />
+    <link rel="preload" as="image" href="assets/linkedin.png" />
+    <link rel="preload" as="image" href="assets/github_light.png" />
+    <link rel="preload" as="image" href="assets/instagram.png" />
   </head>
   <body>
     <!-- Navigation Desktop -->
-    <nav id="desktop-nav">
+    <nav id="desktop-nav" aria-label="Navigation principale">
       <ul class="nav-links">
         <li><a href="#accueil" class="nav-link active">Accueil</a></li>
         <li><a href="#apropos" class="nav-link">À propos</a></li>
@@ -53,7 +63,12 @@
     <nav id="hamburger-nav">
       <div class="logo"></div>
       <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
+        <div
+          class="hamburger-icon"
+          onclick="toggleMenu()"
+          aria-label="Ouvrir le menu mobile"
+          tabindex="0"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -140,7 +155,7 @@
               aria-label="LinkedIn"
             >
               <img
-                src="assets/linkedin.pngg"
+                src="assets/linkedin.png"
                 alt="linkedin"
                 class="icon"
                 src-light="assets/linkedin.png"
@@ -194,6 +209,7 @@
     <!-- Section À propos -->
     <section id="apropos">
       <h1 class="title" data-aos="fade-up">À propos de moi</h1>
+      <h2 class="subtitle">Présentation</h2>
       <div class="section-container">
         <div class="section__pic-container" data-aos="fade-right">
           <!-- PERSONNALISATION: Autre photo de vous -->
@@ -249,6 +265,7 @@
     <!-- Section Compétences -->
     <section id="competences" class="section-padding">
       <h1 class="title" data-aos="fade-up">Mes compétences</h1>
+      <h2 class="subtitle">Technologies principales</h2>
 
       <!-- Section Technologies (Toolbox uniquement) -->
       <div class="technologies-section" data-aos="fade-up">
@@ -335,6 +352,7 @@
     <!-- Section Projets -->
     <section id="projets">
       <h1 class="title" data-aos="fade-up">Mes Projets</h1>
+      <h2 class="subtitle">Projets récents</h2>
       <div class="projects-container">
         <!-- PERSONNALISATION: Ajoutez vos projets -->
         <div class="project-card" data-aos="fade-up" data-aos-delay="100">
@@ -460,6 +478,7 @@
     <!-- Section Expérience -->
     <section id="experience" class="section-padding bg-light">
       <h1 class="title" data-aos="fade-up">Mon Expérience Professionnelle</h1>
+      <h2 class="subtitle">Expériences</h2>
       <div class="timeline">
         <div class="timeline-item" data-aos="fade-up">
           <div class="timeline-date">2025 - present</div>
@@ -507,6 +526,7 @@
     <!-- Section Contact (refaite) -->
     <section id="contact">
       <h1 class="title" data-aos="fade-up">Me contacter</h1>
+      <h2 class="subtitle">Formulaire de contact</h2>
 
       <div class="contact-container" data-aos="fade-up">
         <div class="contact-info">
@@ -562,15 +582,16 @@
         >
           <form
             id="contactForm"
-            action="https://formsubmit.co/mansourd197@gmail.com"
+            action="https://formspree.io/f/xdkzjlek"
             method="POST"
+            autocomplete="off"
           >
             <!-- Champs cachés pour FormSubmit -->
             <input type="hidden" name="_captcha" value="false" />
             <input
               type="hidden"
               name="_next"
-              value="https://votre-site.com/merci.html"
+              value="https://mansour-dx.github.io/#contact-success"
             />
             <input
               type="hidden"
@@ -578,48 +599,41 @@
               value="Nouveau message du portfolio!"
             />
             <input type="hidden" name="_template" value="table" />
+            <!-- Champ anti-spam (honeypot) -->
+            <input
+              type="text"
+              name="_honey"
+              style="display: none"
+              tabindex="-1"
+              autocomplete="off"
+            />
 
-            <div class="form-group">
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Votre nom"
-                required
-              />
+            <div class="form-group modern">
+              <input type="text" id="name" name="name" required />
+              <label for="name">Votre nom</label>
             </div>
-            <div class="form-group">
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Votre email"
-                required
-              />
+            <div class="form-group modern">
+              <input type="email" id="email" name="email" required />
+              <label for="email">Votre email</label>
             </div>
-            <div class="form-group">
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                placeholder="Sujet"
-                required
-              />
+            <div class="form-group modern">
+              <input type="text" id="subject" name="subject" required />
+              <label for="subject">Sujet</label>
             </div>
-            <div class="form-group">
+            <div class="form-group modern">
               <textarea
                 id="message"
                 name="message"
-                placeholder="Votre message"
                 required
                 rows="5"
-                resize="vertical"
                 spellcheck="true"
               ></textarea>
+              <label for="message">Votre message</label>
             </div>
-            <button type="submit" class="btn btn-color-1 btn-block">
+            <button type="submit" class="btn btn-color-1 btn-block modern-btn">
               Envoyer
             </button>
+            <div id="form-status" class="form-status"></div>
           </form>
         </div>
       </div>
